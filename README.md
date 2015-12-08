@@ -10,3 +10,22 @@ Text encoding
 [![Latest Stable Version](https://poser.pugx.org/xp-framework/text-encode/version.png)](https://packagist.org/packages/xp-framework/text-encode)
 
 Common encodings for files, strings and streams
+
+API
+---
+
+```php
+package text.encode {
+  public class text.encode.Base57
+  public class text.encode.Base64
+  public class text.encode.Base64InputStream
+  public class text.encode.Base64OutputStream
+  public class text.encode.CvsPassword
+  public class text.encode.QuotedPrintable
+  public class text.encode.QuotedPrintableInputStream
+  public class text.encode.QuotedPrintableOutputStream
+  public class text.encode.UTF7
+  public class text.encode.UTF8
+  public class text.encode.UUCode
+}
+```
