@@ -1,7 +1,6 @@
 <?php namespace text\encode;
 
 use io\streams\OutputStream;
-use io\streams\Streams;
 use lang\Type;
 
 /**
