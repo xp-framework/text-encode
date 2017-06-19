@@ -1,5 +1,5 @@
-Pattern matching changelog
-==========================
+Text encoding changelog
+=======================
 
 ## ?.?.? / ????-??-??
 
