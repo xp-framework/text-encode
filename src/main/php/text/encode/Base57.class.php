@@ -12,7 +12,7 @@ define('BASE57_CHARTABLE',  'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23
  *
  * @ext      bcmath
  */
-class Base57 extends \lang\Object {
+class Base57 {
 
   /**
    * Encode number

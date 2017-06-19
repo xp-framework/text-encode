@@ -10,7 +10,7 @@
  *
  * @see      rfc://2045#6.8
  */
-class Base64 extends \lang\Object {
+class Base64 {
 
   /**
    * Encode string

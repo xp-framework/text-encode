@@ -12,7 +12,7 @@ use io\streams\OutputStream;
  * @see      rfc://2045 section 6.7
  * @test     xp://net.xp_framework.unittest.text.encode.QuotedPrintableOutputStreamTest
  */
-class QuotedPrintableOutputStream extends \lang\Object implements OutputStream {
+class QuotedPrintableOutputStream implements OutputStream {
   protected $out= null;
   protected $l= 0;
   protected $buffer= '';

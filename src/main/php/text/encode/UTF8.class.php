@@ -10,7 +10,7 @@
  *
  * @see      rfc://2045#6.8
  */
-class UTF8 extends \lang\Object {
+class UTF8 {
 
   /**
    * Encode string

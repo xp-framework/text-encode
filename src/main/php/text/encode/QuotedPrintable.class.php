@@ -10,7 +10,7 @@
  *
  * @see  rfc://2045#6.7
  */
-class QuotedPrintable extends \lang\Object {
+class QuotedPrintable {
 
   /**
    * Get ASCII values of characters that need to be encoded

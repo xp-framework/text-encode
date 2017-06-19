@@ -9,7 +9,7 @@ use io\streams\Streams;
  * @see      rfc://2045 section 6.8 
  * @test     xp://net.xp_framework.unittest.text.encode.Base64OutputStreamTest
  */
-class Base64OutputStream extends \lang\Object implements OutputStream {
+class Base64OutputStream implements OutputStream {
   protected $out= null;
   
   /**
