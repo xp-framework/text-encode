@@ -5,7 +5,7 @@
  *
  * @see      http://www.loria.fr/~molli/cvs/doc/cvsclient_4.html#SEC4
  */
-class CvsPassword extends \lang\Object {
+class CvsPassword {
 
   /**
    * Encode a given string

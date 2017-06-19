@@ -12,7 +12,7 @@
  * @see      rfc://2060
  * @see      rfc://1642
  */
-class UTF7 extends \lang\Object {
+class UTF7 {
 
   /**
    * Encode string

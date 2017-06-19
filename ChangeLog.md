@@ -3,6 +3,11 @@ Text encoding changelog
 
 ## ?.?.? / ????-??-??
 
+## 8.0.0 / 2017-06-19
+
+* **Heads up:** Drop PHP 5.5 support - @thekid
+* Added forward compatibility with XP 9.0.0 - @thekid
+
 ## 7.1.0 / 2016-08-29
 
 * Added forward compatibility with XP 8.0.0 - @thekid

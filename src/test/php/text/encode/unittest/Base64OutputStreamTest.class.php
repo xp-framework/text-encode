@@ -9,7 +9,10 @@ use text\encode\Base64OutputStream;
  *
  * @see   xp://text.encode.Base64OutputStream
  */
-#[@action(new VerifyThat(function() { return in_array("convert.*", stream_get_filters()); }))]
+#[@action([
+#  new VerifyThat(function() { return in_array("convert.*", stream_get_filters()); }),
+#  new VerifyThat(function() { return !defined('HHVM_VERSION'); })
+#])]
 class Base64OutputStreamTest extends \unittest\TestCase {
 
   /**

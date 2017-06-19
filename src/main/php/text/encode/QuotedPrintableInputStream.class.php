@@ -13,7 +13,7 @@ use io\streams\InputStream;
  * @see      rfc://2045 section 6.7
  * @test     xp://net.xp_framework.unittest.text.encode.QuotedPrintableInputStreamTest
  */
-class QuotedPrintableInputStream extends \lang\Object implements InputStream {
+class QuotedPrintableInputStream implements InputStream {
   protected $in = null;
   protected $buffer= '';
   
