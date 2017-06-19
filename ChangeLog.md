@@ -5,6 +5,7 @@ Text encoding changelog
 
 ## 8.0.0 / 2017-06-19
 
+* Fixed issue #2: Fix Base64OutputStream on HHVM - @thekid
 * **Heads up:** Drop PHP 5.5 support - @thekid
 * Added forward compatibility with XP 9.0.0 - @thekid
 
