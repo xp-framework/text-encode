@@ -3,6 +3,10 @@ Text encoding changelog
 
 ## ?.?.? / ????-??-??
 
+## 8.0.1 / 2020-04-04
+
+* Made compatible with XP 10 - @thekid
+
 ## 8.0.0 / 2017-06-19
 
 * Fixed issue #2: Fix Base64OutputStream on HHVM - @thekid
