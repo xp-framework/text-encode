@@ -2,13 +2,13 @@
 
 language: php
 
-dist: trusty
-
 php:
   - 5.6
   - 7.0
   - 7.1
-  - hhvm
+  - 7.2
+  - 7.3
+  - 7.4
   - nightly
 
 matrix:
@@ -16,12 +16,9 @@ matrix:
     - php: nightly
 
 before_script:
-  - wget 'https://github.com/xp-framework/xp-runners/releases/download/v5.6.1/setup' -O - | php
+  - curl -sSL https://dl.bintray.com/xp-runners/generic/xp-run-8.1.7.sh > xp-run
   - composer install --prefer-dist
   - echo "vendor/autoload.php" > composer.pth
-  - echo "use=vendor/xp-framework/core" > xp.ini
-  - echo "[runtime]" >> xp.ini
-  - echo "date.timezone=Europe/Berlin" >> xp.ini
 
 script:
-  - ./unittest src/test/php
+  - sh xp-run xp.unittest.TestRunner src/test/php
