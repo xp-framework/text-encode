@@ -45,7 +45,7 @@ class QuotedPrintableInputStream implements InputStream {
             $read.= $this->in->read(2);
             $s= strlen($read);
           }
-          if ("\n" === $read{$o}) {
+          if ("\n" === $read[$o]) {
             $o+= 1;
           } else {
             if (1 !== sscanf($h= substr($read, $o, 2), '%x', $c)) {

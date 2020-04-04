@@ -56,9 +56,9 @@ class QuotedPrintableOutputStream implements OutputStream {
     $arg= $this->buffer.$arg;
     $s= strlen($arg)- 1;
     for ($i= 0; $i < $s; $i++) {
-      $this->writeChar($arg{$i});
+      $this->writeChar($arg[$i]);
     }
-    $this->buffer= $arg{$s};
+    $this->buffer= $arg[$s];
   }	
 
   /**
