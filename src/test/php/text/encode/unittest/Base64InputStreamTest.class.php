@@ -1,8 +1,8 @@
 <?php namespace text\encode\unittest;
 
-use unittest\actions\VerifyThat;
 use io\streams\MemoryInputStream;
 use text\encode\Base64InputStream;
+use unittest\actions\VerifyThat;
 
 /**
  * Test base64 decoder

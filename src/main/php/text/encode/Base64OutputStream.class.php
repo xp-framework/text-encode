@@ -1,7 +1,6 @@
 <?php namespace text\encode;
 
-use io\streams\OutputStream;
-use io\streams\Streams;
+use io\streams\{OutputStream, Streams};
 
 /**
  * OuputStream that encodes data to base64 encoding

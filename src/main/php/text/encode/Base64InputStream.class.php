@@ -1,7 +1,6 @@
 <?php namespace text\encode;
 
-use io\streams\InputStream;
-use io\streams\Streams;
+use io\streams\{InputStream, Streams};
 
 /**
  * InputStream that decodes from a base64-encoded source 

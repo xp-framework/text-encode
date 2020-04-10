@@ -1,8 +1,8 @@
 <?php namespace text\encode\unittest;
 
-use unittest\actions\VerifyThat;
 use io\streams\MemoryOutputStream;
 use text\encode\Base64OutputStream;
+use unittest\actions\VerifyThat;
 
 /**
  * Test base64 encoder
@@ -12,10 +12,6 @@ use text\encode\Base64OutputStream;
 #[@action(new VerifyThat(function() { return in_array("convert.*", stream_get_filters()); }))]
 class Base64OutputStreamTest extends \unittest\TestCase {
 
-  /**
-   * Test single write
-   *
-   */
   #[@test]
   public function singleWrite() {
     $out= new MemoryOutputStream();
@@ -25,10 +21,6 @@ class Base64OutputStreamTest extends \unittest\TestCase {
     $this->assertEquals(base64_encode('Hello'), $out->getBytes());
   }
 
-  /**
-   * Test single write
-   *
-   */
   #[@test]
   public function lineWrappedAt76Characters() {
     $data= str_repeat('1', 75).str_repeat('2', 75);
@@ -39,10 +31,6 @@ class Base64OutputStreamTest extends \unittest\TestCase {
     $this->assertEquals(rtrim(chunk_split(base64_encode($data), 76, "\n"), "\n"), $out->getBytes());
   }
 
-  /**
-   * Test multiple consecutive writes
-   *
-   */
   #[@test]
   public function multipeWrites() {
     $out= new MemoryOutputStream();

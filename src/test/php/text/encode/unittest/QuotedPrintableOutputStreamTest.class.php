@@ -1,8 +1,8 @@
 <?php namespace text\encode\unittest;
 
-use unittest\TestCase;
 use io\streams\MemoryOutputStream;
 use text\encode\QuotedPrintableOutputStream;
+use unittest\TestCase;
 
 
 /**
@@ -48,7 +48,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
   public function umlaut() {
     $out= new MemoryOutputStream();
     $stream= new QuotedPrintableOutputStream($out);
-    $stream->write('Hello Übercoder');
+    $stream->write("Hello \xdcbercoder");
     $stream->close();
     $this->assertEquals('Hello =DCbercoder', $out->getBytes());
   }
@@ -61,7 +61,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
   public function umlautAtTheBeginning() {
     $out= new MemoryOutputStream();
     $stream= new QuotedPrintableOutputStream($out);
-    $stream->write('Übercoder');
+    $stream->write("\xdcbercoder");
     $stream->close();
     $this->assertEquals('=DCbercoder', $out->getBytes());
   }

@@ -1,10 +1,9 @@
 <?php namespace text\encode\unittest;
 
-use unittest\TestCase;
-use io\streams\InputStream;
-use io\streams\MemoryInputStream;
-use text\encode\QuotedPrintableInputStream;
 use io\IOException;
+use io\streams\{InputStream, MemoryInputStream};
+use text\encode\QuotedPrintableInputStream;
+use unittest\TestCase;
 
 /**
  * Test QuotedPrintable decoder
@@ -38,7 +37,7 @@ class QuotedPrintableInputStreamTest extends TestCase {
     $stream= new QuotedPrintableInputStream(new MemoryInputStream('=DCbercoder'));
     $chunk= $stream->read();
     $stream->close();
-    $this->assertEquals('Übercoder', $chunk);
+    $this->assertEquals("\xdcbercoder", $chunk);
   }
 
   #[@test]
@@ -91,7 +90,7 @@ class QuotedPrintableInputStreamTest extends TestCase {
 
   #[@test]
   public function chunkedRead() {
-    $expected= 'Hello Übercoder & World';
+    $expected= "Hello \xdcbercoder & World";
     $stream= new QuotedPrintableInputStream(newinstance(InputStream::class, [['Hello =', 'DCbercoder=', "\n", ' & World']], '{
       protected $chunks;
       
