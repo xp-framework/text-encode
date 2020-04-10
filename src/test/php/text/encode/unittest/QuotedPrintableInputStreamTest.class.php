@@ -91,12 +91,8 @@ class QuotedPrintableInputStreamTest extends TestCase {
   #[@test]
   public function chunkedRead() {
     $expected= "Hello \xdcbercoder & World";
-    $stream= new QuotedPrintableInputStream(newinstance(InputStream::class, [['Hello =', 'DCbercoder=', "\n", ' & World']], '{
-      protected $chunks;
-      
-      public function __construct(array $chunks) {
-        $this->chunks= $chunks;
-      }
+    $stream= new QuotedPrintableInputStream(new class() implements InputStream {
+      private $chunks= ['Hello =', 'DCbercoder=', "\n", ' & World'];
       
       public function read($limit= 8192) {
         return array_shift($this->chunks);
@@ -109,7 +105,7 @@ class QuotedPrintableInputStreamTest extends TestCase {
       public function close() {
         $this->chunks= [];
       }
-    }'));
+    });
     $chunk= $stream->read(strlen($expected));
     $stream->close();
     $this->assertEquals($expected, $chunk);
