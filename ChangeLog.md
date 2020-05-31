@@ -3,6 +3,11 @@ Text encoding changelog
 
 ## ?.?.? / ????-??-??
 
+## 9.0.1 / 2020-05-31
+
+* Removed HHVM implementations added in #2, HHVM no longer supports PHP
+  (@thekid)
+
 ## 9.0.0 / 2020-04-10
 
 * Implemented xp-framework/rfc#334: Drop PHP 5.6:
