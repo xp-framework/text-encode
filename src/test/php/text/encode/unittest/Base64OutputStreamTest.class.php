@@ -3,16 +3,17 @@
 use io\streams\MemoryOutputStream;
 use text\encode\Base64OutputStream;
 use unittest\actions\VerifyThat;
+use unittest\{Test, TestCase};
 
 /**
  * Test base64 encoder
  *
  * @see   xp://text.encode.Base64OutputStream
  */
-#[@action(new VerifyThat(function() { return in_array("convert.*", stream_get_filters()); }))]
-class Base64OutputStreamTest extends \unittest\TestCase {
+#[Action(eval: 'new VerifyThat(fn() => in_array("convert.*", stream_get_filters()))')]
+class Base64OutputStreamTest extends TestCase {
 
-  #[@test]
+  #[Test]
   public function singleWrite() {
     $out= new MemoryOutputStream();
     $stream= new Base64OutputStream($out);
@@ -21,7 +22,7 @@ class Base64OutputStreamTest extends \unittest\TestCase {
     $this->assertEquals(base64_encode('Hello'), $out->getBytes());
   }
 
-  #[@test]
+  #[Test]
   public function lineWrappedAt76Characters() {
     $data= str_repeat('1', 75).str_repeat('2', 75);
     $out= new MemoryOutputStream();
@@ -31,7 +32,7 @@ class Base64OutputStreamTest extends \unittest\TestCase {
     $this->assertEquals(rtrim(chunk_split(base64_encode($data), 76, "\n"), "\n"), $out->getBytes());
   }
 
-  #[@test]
+  #[Test]
   public function multipeWrites() {
     $out= new MemoryOutputStream();
     $stream= new Base64OutputStream($out);

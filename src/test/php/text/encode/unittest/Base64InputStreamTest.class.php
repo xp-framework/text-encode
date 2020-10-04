@@ -3,20 +3,21 @@
 use io\streams\MemoryInputStream;
 use text\encode\Base64InputStream;
 use unittest\actions\VerifyThat;
+use unittest\{Test, TestCase};
 
 /**
  * Test base64 decoder
  *
  * @see   xp://text.encode.Base64InputStream
  */
-#[@action(new VerifyThat(function() { return in_array("convert.*", stream_get_filters()); }))]
-class Base64InputStreamTest extends \unittest\TestCase {
+#[Action(eval: 'new VerifyThat(fn() => in_array("convert.*", stream_get_filters()))')]
+class Base64InputStreamTest extends TestCase {
 
   /**
    * Test single read
    *
    */
-  #[@test]
+  #[Test]
   public function singleRead() {
     $stream= new Base64InputStream(new MemoryInputStream(base64_encode('Hello')));
     $chunk= $stream->read();
@@ -28,7 +29,7 @@ class Base64InputStreamTest extends \unittest\TestCase {
    * Test multiple consecutive reads
    *
    */
-  #[@test]
+  #[Test]
   public function multipleReads() {
     $stream= new Base64InputStream(new MemoryInputStream(base64_encode('Hello World')));
     $chunk1= $stream->read(5);

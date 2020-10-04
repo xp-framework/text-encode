@@ -2,7 +2,7 @@
 
 use io\streams\MemoryOutputStream;
 use text\encode\QuotedPrintableOutputStream;
-use unittest\TestCase;
+use unittest\{Test, TestCase};
 
 
 /**
@@ -16,7 +16,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
    * Test single write
    *
    */
-  #[@test]
+  #[Test]
   public function singleWrite() {
     $out= new MemoryOutputStream();
     $stream= new QuotedPrintableOutputStream($out);
@@ -29,7 +29,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
    * Test multiple consecutive writes
    *
    */
-  #[@test]
+  #[Test]
   public function multipeWrites() {
     $out= new MemoryOutputStream();
     $stream= new QuotedPrintableOutputStream($out);
@@ -44,7 +44,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
    * Test encoding an umlaut
    *
    */
-  #[@test]
+  #[Test]
   public function umlaut() {
     $out= new MemoryOutputStream();
     $stream= new QuotedPrintableOutputStream($out);
@@ -57,7 +57,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
    * Test encoding an umlaut
    *
    */
-  #[@test]
+  #[Test]
   public function umlautAtTheBeginning() {
     $out= new MemoryOutputStream();
     $stream= new QuotedPrintableOutputStream($out);
@@ -70,7 +70,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
    * Test encoding lines 150 bytes of data should end up in two lines.
    *
    */
-  #[@test]
+  #[Test]
   public function lineLengthMayNotBeLongerThan76Characters() {
     $out= new MemoryOutputStream();
     $stream= new QuotedPrintableOutputStream($out);
@@ -84,7 +84,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
    * Test end of data
    *
    */
-  #[@test]
+  #[Test]
   public function spaceAtEndOfMustBeEncoded() {
     $out= new MemoryOutputStream();
     $stream= new QuotedPrintableOutputStream($out);
@@ -97,7 +97,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
    * Test decoding an equals sign
    *
    */
-  #[@test]
+  #[Test]
   public function equalsSign() {
     $out= new MemoryOutputStream();
     $stream= new QuotedPrintableOutputStream($out);
