@@ -19,7 +19,7 @@ class Base64OutputStreamTest extends TestCase {
     $stream= new Base64OutputStream($out);
     $stream->write('Hello');
     $stream->close();
-    $this->assertEquals(base64_encode('Hello'), $out->getBytes());
+    $this->assertEquals(base64_encode('Hello'), $out->bytes());
   }
 
   #[Test]
@@ -29,7 +29,7 @@ class Base64OutputStreamTest extends TestCase {
     $stream= new Base64OutputStream($out, 76);
     $stream->write($data);
     $stream->close();
-    $this->assertEquals(rtrim(chunk_split(base64_encode($data), 76, "\n"), "\n"), $out->getBytes());
+    $this->assertEquals(rtrim(chunk_split(base64_encode($data), 76, "\n"), "\n"), $out->bytes());
   }
 
   #[Test]
@@ -40,6 +40,6 @@ class Base64OutputStreamTest extends TestCase {
     $stream->write(' ');
     $stream->write('World');
     $stream->close();
-    $this->assertEquals(base64_encode('Hello World'), $out->getBytes());
+    $this->assertEquals(base64_encode('Hello World'), $out->bytes());
   }
 }

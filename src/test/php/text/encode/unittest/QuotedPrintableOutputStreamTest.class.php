@@ -22,7 +22,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
     $stream= new QuotedPrintableOutputStream($out);
     $stream->write('Hello');
     $stream->close();
-    $this->assertEquals('Hello', $out->getBytes());
+    $this->assertEquals('Hello', $out->bytes());
   }
 
   /**
@@ -37,7 +37,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
     $stream->write(' ');
     $stream->write('World');
     $stream->close();
-    $this->assertEquals('Hello World', $out->getBytes());
+    $this->assertEquals('Hello World', $out->bytes());
   }
 
   /**
@@ -50,7 +50,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
     $stream= new QuotedPrintableOutputStream($out);
     $stream->write("Hello \xdcbercoder");
     $stream->close();
-    $this->assertEquals('Hello =DCbercoder', $out->getBytes());
+    $this->assertEquals('Hello =DCbercoder', $out->bytes());
   }
 
   /**
@@ -63,7 +63,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
     $stream= new QuotedPrintableOutputStream($out);
     $stream->write("\xdcbercoder");
     $stream->close();
-    $this->assertEquals('=DCbercoder', $out->getBytes());
+    $this->assertEquals('=DCbercoder', $out->bytes());
   }
 
   /**
@@ -77,7 +77,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
     $stream->write(str_repeat('1', 75));
     $stream->write(str_repeat('2', 75));
     $stream->close();
-    $this->assertEquals(str_repeat('1', 75)."=\n".str_repeat('2', 75), $out->getBytes());
+    $this->assertEquals(str_repeat('1', 75)."=\n".str_repeat('2', 75), $out->bytes());
   }
 
   /**
@@ -90,7 +90,7 @@ class QuotedPrintableOutputStreamTest extends TestCase {
     $stream= new QuotedPrintableOutputStream($out);
     $stream->write('Hello ');
     $stream->close();
-    $this->assertEquals('Hello=20', $out->getBytes());
+    $this->assertEquals('Hello=20', $out->bytes());
   }
 
   /**
@@ -103,6 +103,6 @@ class QuotedPrintableOutputStreamTest extends TestCase {
     $stream= new QuotedPrintableOutputStream($out);
     $stream->write('A=1');
     $stream->close();
-    $this->assertEquals('A=3D1', $out->getBytes());
+    $this->assertEquals('A=3D1', $out->bytes());
   }
 }

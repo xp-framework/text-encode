@@ -3,6 +3,10 @@ Text encoding changelog
 
 ## ?.?.? / ????-??-??
 
+## 10.0.0 / 2022-02-27
+
+* Implemented xp-framework/rfc#341, dropping compatibility with XP 9
+
 ## 9.0.1 / 2020-05-31
 
 * Removed HHVM implementations added in #2, HHVM no longer supports PHP
