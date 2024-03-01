@@ -3,6 +3,8 @@ Text encoding changelog
 
 ## ?.?.? / ????-??-??
 
+* Added PHP 8.3 and 8.4 to the test matrix
+
 ## 10.0.0 / 2022-02-27
 
 * Implemented xp-framework/rfc#341, dropping compatibility with XP 9
