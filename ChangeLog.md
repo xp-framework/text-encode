@@ -3,7 +3,7 @@ Text encoding changelog
 
 ## ?.?.? / ????-??-??
 
-* Added PHP 8.3 and 8.4 to the test matrix
+* Added PHP 8.3 and 8.4 to the test matrix - @thekid
 
 ## 10.0.0 / 2022-02-27
 
