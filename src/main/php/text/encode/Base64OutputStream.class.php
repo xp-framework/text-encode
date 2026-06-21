@@ -21,7 +21,7 @@ class Base64OutputStream implements OutputStream {
     $params= $lineLength ? ['line-length' => $lineLength, 'line-break-chars' => "\n"] : [];
     $this->out= Streams::writeableFd($out);
     if (!stream_filter_append($this->out, 'convert.base64-encode', STREAM_FILTER_WRITE, $params)) {
-      throw new \io\IOException('Could not append stream filter');
+      throw new \io\OperationFailed('Could not append stream filter');
     }
   }
   
