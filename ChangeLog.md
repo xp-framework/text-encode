@@ -3,7 +3,14 @@ Text encoding changelog
 
 ## ?.?.? / ????-??-??
 
-* Added PHP 8.3 and 8.4 to the test matrix - @thekid
+## 10.1.0 / 2026-06-21
+
+* Made library compatible with XP 11, all PHP versions from 8.3 up to 8.6
+  (@thekid)
+* Merged PR #3: Refactor I/O exceptions, dropping XP 10 support in the
+  doing. See xp-framework/core#363 for a write-up on the reason behind
+  this and the plan to move forward.
+  (@thekid)
 
 ## 10.0.0 / 2022-02-27
 
