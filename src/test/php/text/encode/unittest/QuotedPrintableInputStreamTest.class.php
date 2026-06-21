@@ -1,23 +1,18 @@
 <?php namespace text\encode\unittest;
 
-use io\IOException;
+use io\OperationFailed;
 use io\streams\{InputStream, MemoryInputStream};
+use test\{Assert, Expect, Test};
 use text\encode\QuotedPrintableInputStream;
-use unittest\{Expect, Test, TestCase};
 
-/**
- * Test QuotedPrintable decoder
- *
- * @see   xp://text.encode.QuotedPrintableInputStream
- */
-class QuotedPrintableInputStreamTest extends TestCase {
+class QuotedPrintableInputStreamTest {
 
   #[Test]
   public function singleRead() {
     $stream= new QuotedPrintableInputStream(new MemoryInputStream('Hello'));
     $chunk= $stream->read();
     $stream->close();
-    $this->assertEquals('Hello', $chunk);
+    Assert::equals('Hello', $chunk);
   }
 
   #[Test]
@@ -27,9 +22,9 @@ class QuotedPrintableInputStreamTest extends TestCase {
     $chunk2= $stream->read(1);
     $chunk3= $stream->read(5);
     $stream->close();
-    $this->assertEquals('Hello', $chunk1);
-    $this->assertEquals(' ', $chunk2);
-    $this->assertEquals('World', $chunk3);
+    Assert::equals('Hello', $chunk1);
+    Assert::equals(' ', $chunk2);
+    Assert::equals('World', $chunk3);
   }
 
   #[Test]
@@ -37,7 +32,7 @@ class QuotedPrintableInputStreamTest extends TestCase {
     $stream= new QuotedPrintableInputStream(new MemoryInputStream('=DCbercoder'));
     $chunk= $stream->read();
     $stream->close();
-    $this->assertEquals("\xdcbercoder", $chunk);
+    Assert::equals("\xdcbercoder", $chunk);
   }
 
   #[Test]
@@ -45,7 +40,7 @@ class QuotedPrintableInputStreamTest extends TestCase {
     $stream= new QuotedPrintableInputStream(new MemoryInputStream('Space between'));
     $chunk= $stream->read();
     $stream->close();
-    $this->assertEquals('Space between', $chunk);
+    Assert::equals('Space between', $chunk);
   }
 
   #[Test]
@@ -53,7 +48,7 @@ class QuotedPrintableInputStreamTest extends TestCase {
     $stream= new QuotedPrintableInputStream(new MemoryInputStream('Space=20between'));
     $chunk= $stream->read();
     $stream->close();
-    $this->assertEquals('Space between', $chunk);
+    Assert::equals('Space between', $chunk);
   }
 
   #[Test]
@@ -61,7 +56,7 @@ class QuotedPrintableInputStreamTest extends TestCase {
     $stream= new QuotedPrintableInputStream(new MemoryInputStream("Tab\tbetween"));
     $chunk= $stream->read();
     $stream->close();
-    $this->assertEquals("Tab\tbetween", $chunk);
+    Assert::equals("Tab\tbetween", $chunk);
   }
 
   #[Test]
@@ -69,7 +64,7 @@ class QuotedPrintableInputStreamTest extends TestCase {
     $stream= new QuotedPrintableInputStream(new MemoryInputStream('Tab=09between'));
     $chunk= $stream->read();
     $stream->close();
-    $this->assertEquals("Tab\tbetween", $chunk);
+    Assert::equals("Tab\tbetween", $chunk);
   }
 
   #[Test]
@@ -77,7 +72,7 @@ class QuotedPrintableInputStreamTest extends TestCase {
     $stream= new QuotedPrintableInputStream(new MemoryInputStream(str_repeat('1', 75)."=\n".str_repeat('2', 75)));
     $chunk= $stream->read(150);
     $stream->close();
-    $this->assertEquals(str_repeat('1', 75).str_repeat('2', 75), $chunk);
+    Assert::equals(str_repeat('1', 75).str_repeat('2', 75), $chunk);
   }
 
   #[Test]
@@ -85,7 +80,7 @@ class QuotedPrintableInputStreamTest extends TestCase {
     $stream= new QuotedPrintableInputStream(new MemoryInputStream('Hello '));
     $chunk= $stream->read();
     $stream->close();
-    $this->assertEquals('Hello ', $chunk);
+    Assert::equals('Hello ', $chunk);
   }
 
   #[Test]
@@ -108,7 +103,7 @@ class QuotedPrintableInputStreamTest extends TestCase {
     });
     $chunk= $stream->read(strlen($expected));
     $stream->close();
-    $this->assertEquals($expected, $chunk);
+    Assert::equals($expected, $chunk);
   }
 
   #[Test]
@@ -116,7 +111,7 @@ class QuotedPrintableInputStreamTest extends TestCase {
     $stream= new QuotedPrintableInputStream(new MemoryInputStream('A=3D1'));
     $chunk= $stream->read();
     $stream->close();
-    $this->assertEquals('A=1', $chunk);
+    Assert::equals('A=1', $chunk);
   }
 
   #[Test]
@@ -124,10 +119,10 @@ class QuotedPrintableInputStreamTest extends TestCase {
     $stream= new QuotedPrintableInputStream(new MemoryInputStream('=3d'));
     $chunk= $stream->read();
     $stream->close();
-    $this->assertEquals('=', $chunk);
+    Assert::equals('=', $chunk);
   }
   
-  #[Test, Expect(IOException::class)]
+  #[Test, Expect(OperationFailed::class)]
   public function invalidByteSequence() {
     (new QuotedPrintableInputStream(new MemoryInputStream('Hell=XX')))->read();
   }

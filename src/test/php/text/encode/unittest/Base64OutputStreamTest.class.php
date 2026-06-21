@@ -1,17 +1,10 @@
 <?php namespace text\encode\unittest;
 
 use io\streams\MemoryOutputStream;
+use test\{Assert, Test};
 use text\encode\Base64OutputStream;
-use unittest\actions\VerifyThat;
-use unittest\{Test, TestCase};
 
-/**
- * Test base64 encoder
- *
- * @see   xp://text.encode.Base64OutputStream
- */
-#[Action(eval: 'new VerifyThat(fn() => in_array("convert.*", stream_get_filters()))')]
-class Base64OutputStreamTest extends TestCase {
+class Base64OutputStreamTest {
 
   #[Test]
   public function singleWrite() {
@@ -19,7 +12,7 @@ class Base64OutputStreamTest extends TestCase {
     $stream= new Base64OutputStream($out);
     $stream->write('Hello');
     $stream->close();
-    $this->assertEquals(base64_encode('Hello'), $out->bytes());
+    Assert::equals(base64_encode('Hello'), $out->bytes());
   }
 
   #[Test]
@@ -29,7 +22,7 @@ class Base64OutputStreamTest extends TestCase {
     $stream= new Base64OutputStream($out, 76);
     $stream->write($data);
     $stream->close();
-    $this->assertEquals(rtrim(chunk_split(base64_encode($data), 76, "\n"), "\n"), $out->bytes());
+    Assert::equals(rtrim(chunk_split(base64_encode($data), 76, "\n"), "\n"), $out->bytes());
   }
 
   #[Test]
@@ -40,6 +33,6 @@ class Base64OutputStreamTest extends TestCase {
     $stream->write(' ');
     $stream->write('World');
     $stream->close();
-    $this->assertEquals(base64_encode('Hello World'), $out->bytes());
+    Assert::equals(base64_encode('Hello World'), $out->bytes());
   }
 }
