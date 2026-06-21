@@ -49,7 +49,7 @@ class QuotedPrintableInputStream implements InputStream {
             $o+= 1;
           } else {
             if (1 !== sscanf($h= substr($read, $o, 2), '%x', $c)) {
-              throw new \io\IOException('Invalid byte sequence "='.$h.'"');
+              throw new \io\OperationFailed('Invalid byte sequence "='.$h.'"');
             }
             $this->buffer.= chr($c);
             $o+= 2;

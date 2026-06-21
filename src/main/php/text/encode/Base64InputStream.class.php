@@ -19,7 +19,7 @@ class Base64InputStream implements InputStream {
   public function __construct(InputStream $in) {
     $this->in= Streams::readableFd($in);
     if (!stream_filter_append($this->in, 'convert.base64-decode', STREAM_FILTER_READ)) {
-      throw new \io\IOException('Could not append stream filter');
+      throw new \io\OperationFailed('Could not append stream filter');
     }
   }
 
